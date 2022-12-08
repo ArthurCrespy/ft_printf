@@ -1,15 +1,14 @@
-//
-// Created by acrespy on 11/28/22.
-//
-
 #include "ft_printf.h"
 
-int     main(void)
+int	main(void)
 {
-	char c = 'a';
-	char c1 = 92;
-	char *s = "Bienvenue a 42";
+	char	c = 'a';
+	char	*s = "Bienvenue a 42";
+	void    *p = "Ouistiti";
+	float nb = 24.5;
+	int     nb1 = -9221;
 
-	ft_printf("%% -> %% | char -> %c%c", c, c1);
+	printf("\n> off funct -> %f\n", nb);
+	ft_printf("\n> %% -> %% | char -> %c | str - > %s | address : %p | nb -> %d | unb -> %i\n\n", c, s, p, nb, nb1);
 	return (0);
 }
