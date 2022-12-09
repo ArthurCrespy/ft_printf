@@ -33,23 +33,26 @@ void	ft_printf(const char *str, ...)
 
 void     ft_print(const char *str, va_list args)
 {
-		if (*str == '%')
-			ft_putchar(*str);
 		if (*str == 'c')
 			ft_putchar(va_arg(args, int));
 		if (*str == 's')
 			ft_putstr(va_arg(args, char *));
 		if (*str == 'p')
 		{
-			ft_putstr(va_arg(args, void *));
+			ft_putstr("0x");
+			ft_putnbr_base(va_arg(args, long), "0123456789abcdef");
 		}
 		if (*str == 'd')
-			ft_putnbr(va_arg(args, double));
+			ft_putnbr(va_arg(args, double), 1);
 		if (*str == 'i')
-			ft_putnbr(va_arg(args, int));
+			ft_putnbr(va_arg(args, int), 1);
 		if (*str == 'u')
-			ft_putnbr(va_arg(args, int));
+			ft_putnbr(va_arg(args, int), 0);
 		if (*str == 'x')
-			ft_putnbr(va_arg(args, int));
+			ft_putnbr_base(va_arg(args, int), "0123456789abcdef");
+		if (*str == 'X')
+			ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF");
+		if (*str == '%')
+			ft_putchar(*str);
 		str++;
 }
