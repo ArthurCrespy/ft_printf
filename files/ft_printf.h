@@ -17,12 +17,14 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <malloc.h>
+# include <stdlib.h>
 
 void	ft_printf(const char *str, ...);
+void    ft_print(const char *str, va_list args);
 void	ft_putstr(char *str);
 void	ft_putchar(char c);
-void	ft_putadr(char *adr);
-void	ft_putnbr(long long n);
-char	*ft_itoa(int n);
-void     ft_print(const char *str, va_list args);
+void	ft_putnbr(long long n, int method);
+int     ft_strlen(char *str);
+void	ft_putnbr_base(long nbr, char *base);
+int     check_base(char *str);
 #endif
