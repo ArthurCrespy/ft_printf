@@ -41,10 +41,7 @@ void	ft_print(const char *str, va_list args)
 	if (*str == 's')
 		ft_putstr(va_arg(args, char *));
 	if (*str == 'p')
-	{
-		ft_putstr("0x");
-		ft_putnbr_base(va_arg(args, long long), "0123456789abcdef", 0);
-	}
+		ft_putadr(va_arg(args, long long));
 	if (*str == 'd')
 		ft_putnbr(va_arg(args, int), 1);
 	if (*str == 'i')
@@ -52,9 +49,9 @@ void	ft_print(const char *str, va_list args)
 	if (*str == 'u')
 		ft_putnbr(va_arg(args, int), 0);
 	if (*str == 'x')
-		ft_putnbr_base(va_arg(args, int), "0123456789abcdef", 0);
+		ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
 	if (*str == 'X')
-		ft_putnbr_base(va_arg(args, int), "0123456789ABCDEF", 0);
+		ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
 	if (*str == '%')
 		ft_putchar(*str);
 	str++;
