@@ -9,5 +9,4 @@ add_executable(ft_printf
         files/main.c
         files/ft_printf.c
         files/ft_printf_put.c
-        files/ft_printf_utils.c
         files/ft_printf.h)
