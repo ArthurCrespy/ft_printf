@@ -29,12 +29,30 @@ void	ft_putstr(char *str)
 	}
 }
 
+void    ft_putadr(long long nbr)
+{
+	if (nbr == 0)
+		ft_putstr("(nil)");
+	else if ((long) nbr == LONG_MIN)
+		ft_putstr("0x8000000000000000");
+	else if ((unsigned long) nbr == ULONG_MAX)
+		ft_putstr("0xffffffffffffffff");
+	else
+	{
+		long long *ptr;
+
+		ptr = &nbr;
+		ft_putstr("0x");
+		ft_putnbr_base(*ptr, "0123456789abcdef");
+	}
+}
+
 void	ft_putnbr(long long n, int method)
 {
     if (method == 0)
     {
         if (n < 0)
-            ft_putnbr(4294967295 - (n * -1) + 1, 1);
+            ft_putnbr(ULONG_MAX - (n * -1) + 1, 1);
         else
             ft_putnbr(n, 1);
     }
@@ -51,34 +69,19 @@ void	ft_putnbr(long long n, int method)
     }
 }
 
-void    ft_putnbr_base(long long nbr, char *base, int check)
+void ft_putnbr_base(long long nbr, char *base)
 {
-    int			b;
+	long	size;
 
-	  b = ft_strlen(base);
-    if (check == 1)
-    {
-        if (nbr == 0)
-            ft_putstr("(nil)");
-        if (nbr == LONG_MIN)
-            ft_putstr("8000000000000000");
-        if ((unsigned long)nbr == ULONG_MAX)
-            ft_putstr("ffffffffffffffff");
-    }
-    else 
-    {
-        if (nbr < 0)
-        {
-            ft_putchar('-');
-            nbr *= -1;
-            ft_putnbr_base(nbr, base, 0);
-        }
-        if (nbr < b)
-            ft_putchar(base[nbr]);
-        else
-        {
-            ft_putnbr_base(nbr / b, base, 0);
-            ft_putnbr_base(nbr % b, base, 0);
-        }
-    }
+	size = (long)ft_strlen(base);
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		ft_putchar('-');
+	}
+	if (nbr >= size)
+		ft_putnbr_base(nbr / size, base);
+	ft_putchar(base[nbr % size]);
 }
+
+
