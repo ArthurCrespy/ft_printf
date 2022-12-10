@@ -1,79 +1,84 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_printf_put.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 12:49:07 by acrespy           #+#    #+#             */
-/*   Updated: 2022/11/28 13:37:04 by acrespy          ###   ########.fr       */
+/*   Updated: 2022/12/10 11:32:03 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	ft_count_print(1);
+}
+
 void	ft_putstr(char *str)
 {
+	if (str == NULL)
+		ft_putstr("(null)");
 	while (str && *str != '\0')
 	{
-		write(1, str, 1);
+		ft_putchar(*str);
 		str++;
 	}
 }
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
 void	ft_putnbr(long long n, int method)
 {
-	long long	nb;
-
-	nb = n;
-	if (method == 1)
-	{
-		if (nb < 0)
-		{
-			ft_putchar('-');
-			nb *= -1;
-		}
-	}
-	if (method == 0)
-	{
-		if (nb < 0)
-			nb *= -1;
-	}
-	if (nb > 9)
-		ft_putnbr(nb / 10, method);
-	ft_putchar(nb % 10 + 48);
+    if (method == 0)
+    {
+        if (n < 0)
+            ft_putnbr(4294967295 - (n * -1) + 1, 1);
+        else
+            ft_putnbr(n, 1);
+    }
+    if (method == 1)
+    {
+        if (n < 0)
+        {
+            ft_putchar('-');
+            n *= -1;
+        }
+        if (n > 9)
+            ft_putnbr(n / 10, method);
+        ft_putchar(n % 10 + 48);
+    }
 }
 
-void	ft_putnbr_base(long nbr, char *base)
+void    ft_putnbr_base(long long nbr, char *base, int check)
 {
-	long	b;
+    int			b;
 
-	if (!check_base(base))
-		return ;
-	b = ft_strlen(base);
-	if (nbr <= -2147483648)
-	{
-		write(1, "-", 1);
-		ft_putnbr_base((-(long int)nbr) / b, base);
-		ft_putnbr_base((-(long int)nbr) % b, base);
-	}
-	else if (nbr < 0)
-	{
-		write(1, "-", 1);
-		ft_putnbr_base(-nbr, base);
-	}
-	else if (nbr < b)
-	{
-		write(1, &base[nbr], 1);
-	}
-	else
-	{
-		ft_putnbr_base(nbr / b, base);
-		ft_putnbr_base(nbr % b, base);
-	}
+	  b = ft_strlen(base);
+    if (check == 1)
+    {
+        if (nbr == 0)
+            ft_putstr("(nil)");
+        if (nbr == LONG_MIN)
+            ft_putstr("8000000000000000");
+        if ((unsigned long)nbr == ULONG_MAX)
+            ft_putstr("ffffffffffffffff");
+    }
+    else 
+    {
+        if (nbr < 0)
+        {
+            ft_putchar('-');
+            nbr *= -1;
+            ft_putnbr_base(nbr, base, 0);
+        }
+        if (nbr < b)
+            ft_putchar(base[nbr]);
+        else
+        {
+            ft_putnbr_base(nbr / b, base, 0);
+            ft_putnbr_base(nbr % b, base, 0);
+        }
+    }
 }
