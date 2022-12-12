@@ -47,26 +47,16 @@ void    ft_putadr(long long nbr)
 	}
 }
 
-void	ft_putnbr(long long n, int method)
+void ft_putnbr(long long n)
 {
-    if (method == 0)
+    if (n < 0)
     {
-        if (n < 0)
-            ft_putnbr(ULONG_MAX - (n * -1) + 1, 1);
-        else
-            ft_putnbr(n, 1);
+        ft_putchar('-');
+        n *= -1;
     }
-    if (method == 1)
-    {
-        if (n < 0)
-        {
-            ft_putchar('-');
-            n *= -1;
-        }
-        if (n > 9)
-            ft_putnbr(n / 10, method);
-        ft_putchar(n % 10 + 48);
-    }
+    if (n > 9)
+	    ft_putnbr(n / 10);
+    ft_putchar(n % 10 + 48);
 }
 
 void ft_putnbr_base(long long nbr, char *base)

@@ -43,11 +43,11 @@ void	ft_print(const char *str, va_list args)
 	if (*str == 'p')
 		ft_putadr(va_arg(args, long long));
 	if (*str == 'd')
-		ft_putnbr(va_arg(args, int), 1);
+		ft_putnbr(va_arg(args, int));
 	if (*str == 'i')
-		ft_putnbr(va_arg(args, int), 1);
+		ft_putnbr(va_arg(args, int));
 	if (*str == 'u')
-		ft_putnbr(va_arg(args, int), 0);
+		ft_putnbr(va_arg(args, unsigned int));
 	if (*str == 'x')
 		ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
 	if (*str == 'X')
