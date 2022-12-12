@@ -13,7 +13,7 @@ You will mainly learn about using a variable number of arguments</a></h4>
 
 <p align="center">
     <a href="https://github.com/ArthurCrespy/ft_printf/search?l=c"> <img alt="Language: C" src="https://img.shields.io/badge/language-C-orange"></a>
-    <a href="https://github.com/ArthurCrespy/ft_printf"> <img alt="Lines of code: 1.6k" src="https://img.shields.io/badge/total%20lines-1.6k-blue"></a>
+    <a href="https://github.com/ArthurCrespy/ft_printf"> <img alt="Lines of code" src="https://img.shields.io/tokei/lines/github/ArthurCrespy/ft_printf"></a>
     <a href="https://github.com/ArthurCrespy/ft_printf/commits"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/ArthurCrespy/ft_printf?color=yellow"></a>
     <a href="https://github.com/ArthurCrespy/ft_printf/watchers"> <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/ArthurCrespy/ft_printf?color=ff69b4"></a>
     <a href="https://projects.intra.42.fr/42cursus-ft_printf/acrespy"> <img alt="Result: 125/100" src="https://img.shields.io/badge/result-NA/100-brightgreen"></a>
