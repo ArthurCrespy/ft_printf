@@ -6,7 +6,7 @@
 /*   By: acrespy <acrespy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 12:49:07 by acrespy           #+#    #+#             */
-/*   Updated: 2022/12/10 11:32:03 by acrespy          ###   ########.fr       */
+/*   Updated: 2022/12/12 17:21:45 by acrespy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
-	ft_count_print(1);
+	ft_count_print(1, 1);
 }
 
 void	ft_putstr(char *str)
@@ -29,8 +29,11 @@ void	ft_putstr(char *str)
 	}
 }
 
-void    ft_putadr(long long nbr)
+void	ft_putadr(long long nbr)
 {
+	long long		*ptr;
+
+	ptr = &nbr;
 	if (nbr == 0)
 		ft_putstr("(nil)");
 	else if ((long) nbr == LONG_MIN)
@@ -39,27 +42,24 @@ void    ft_putadr(long long nbr)
 		ft_putstr("0xffffffffffffffff");
 	else
 	{
-		long long *ptr;
-
-		ptr = &nbr;
 		ft_putstr("0x");
 		ft_putnbr_base(*ptr, "0123456789abcdef");
 	}
 }
 
-void ft_putnbr(long long n)
+void	ft_putnbr(long long n)
 {
-    if (n < 0)
-    {
-        ft_putchar('-');
-        n *= -1;
-    }
-    if (n > 9)
-	    ft_putnbr(n / 10);
-    ft_putchar(n % 10 + 48);
+	if (n < 0)
+	{
+		ft_putchar('-');
+		n *= -1;
+	}
+	if (n > 9)
+		ft_putnbr(n / 10);
+	ft_putchar(n % 10 + 48);
 }
 
-void ft_putnbr_base(long long nbr, char *base)
+void	ft_putnbr_base(long long nbr, char *base)
 {
 	long	size;
 
@@ -73,5 +73,3 @@ void ft_putnbr_base(long long nbr, char *base)
 		ft_putnbr_base(nbr / size, base);
 	ft_putchar(base[nbr % size]);
 }
-
-
