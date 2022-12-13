@@ -17,6 +17,7 @@ int	ft_printf(const char *str, ...)
 	va_list	args;
 
 	va_start(args, str);
+	ft_count_print(0, 0);
 	while (str && *str != '\0')
 	{
 		if (*str == '%')
@@ -31,7 +32,7 @@ int	ft_printf(const char *str, ...)
 		str++;
 	}
 	va_end(args);
-	return (ft_count_print(0));
+	return (ft_count_print(0, 1));
 }
 
 void	ft_print(const char *str, va_list args)
@@ -57,10 +58,12 @@ void	ft_print(const char *str, va_list args)
 	str++;
 }
 
-int	ft_count_print(int count)
+int	ft_count_print(int count, int reset)
 {
 	static int	i;
 
+	if (reset == 0)
+		i = 0;
 	i += count;
 	return (i);
 }
