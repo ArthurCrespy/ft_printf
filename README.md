@@ -2,7 +2,7 @@
   <br>
   <a href="http://www.github.com/ArthurCrespy"><img src="https://42.fr/wp-content/uploads/2021/05/42-Final-sigle-seul.svg" alt="42" width="200"></a>
   <br><br>
-  ft_printf
+  Printf
   <br>
 </h1>
 
