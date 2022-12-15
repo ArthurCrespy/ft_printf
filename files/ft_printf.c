@@ -18,17 +18,19 @@ int	ft_printf(const char *str, ...)
 
 	va_start(args, str);
 	ft_count_print(0, 0);
+	if (!str)
+		return (-1);
 	while (str && *str != '\0')
 	{
 		if (*str == '%')
 		{
 			str++;
+			if (*str == '\0')
+				return (-1);
 			ft_print(str, args);
 		}
 		else
-		{
 			ft_putchar(*str);
-		}
 		str++;
 	}
 	va_end(args);
@@ -55,6 +57,11 @@ void	ft_print(const char *str, va_list args)
 		ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
 	if (*str == '%')
 		ft_putchar(*str);
+	else
+	{
+		ft_putchar('%');
+		ft_putchar(*str);
+	}
 	str++;
 }
 
