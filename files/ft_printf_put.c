@@ -29,21 +29,14 @@ void	ft_putstr(char *str)
 	}
 }
 
-void	ft_putadr(long long nbr)
+void	ft_putadr(unsigned long nbr)
 {
-	long long		*ptr;
-
-	ptr = &nbr;
 	if (nbr == 0)
 		ft_putstr("(nil)");
-	else if ((long) nbr == LONG_MIN)
-		ft_putstr("0x8000000000000000");
-	else if ((unsigned long) nbr == ULONG_MAX)
-		ft_putstr("0xffffffffffffffff");
 	else
 	{
 		ft_putstr("0x");
-		ft_putnbr_base(*ptr, "0123456789abcdef");
+		ft_putnbr_base(nbr, "0123456789abcdef");
 	}
 }
 
@@ -59,7 +52,7 @@ void	ft_putnbr(long long n)
 	ft_putchar(n % 10 + 48);
 }
 
-void	ft_putnbr_base(long long nbr, char *base)
+void	ft_putnbr_base(unsigned long nbr, char *base)
 {
 	long	size;
 
