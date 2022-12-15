@@ -41,21 +41,21 @@ void	ft_print(const char *str, va_list args)
 {
 	if (*str == 'c')
 		ft_putchar(va_arg(args, int));
-	if (*str == 's')
+	else if (*str == 's')
 		ft_putstr(va_arg(args, char *));
-	if (*str == 'p')
-		ft_putadr(va_arg(args, long long));
-	if (*str == 'd')
+	else if (*str == 'p')
+		ft_putadr(va_arg(args, unsigned long));
+	else if (*str == 'd')
 		ft_putnbr(va_arg(args, int));
-	if (*str == 'i')
+	else if (*str == 'i')
 		ft_putnbr(va_arg(args, int));
-	if (*str == 'u')
+	else if (*str == 'u')
 		ft_putnbr(va_arg(args, unsigned int));
-	if (*str == 'x')
+	else if (*str == 'x')
 		ft_putnbr_base(va_arg(args, unsigned int), "0123456789abcdef");
-	if (*str == 'X')
+	else if (*str == 'X')
 		ft_putnbr_base(va_arg(args, unsigned int), "0123456789ABCDEF");
-	if (*str == '%')
+	else if (*str == '%')
 		ft_putchar(*str);
 	else
 	{
