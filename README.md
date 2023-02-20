@@ -72,7 +72,7 @@ It's one of two C projects of Core01. It's recommended to add this function to t
 ## You may also like...
 
 - [libft](https://github.com/ArthurCrespy/libft) - The first project of the 42 cursus. It's a library of useful functions.
-- [get_next_line](https://github.com/ArthurCrespy/get_next_line) - Because reading from an fd is not exciting - (coming soon)
+- [get_next_line](https://github.com/ArthurCrespy/get_next_line) - Because reading from an fd is not exciting
 
 ## License
 
